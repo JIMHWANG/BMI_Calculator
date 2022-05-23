@@ -140,7 +140,7 @@ table {
 
 .main .mainContent .BMIRecord .colorbar{
     width: 1.1%;
-    background: #86D73F;    
+    /* background: #86D73F;     */
 }
 
 .main .mainContent .BMIRecord .historyRecord{
