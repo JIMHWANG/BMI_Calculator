@@ -29,9 +29,30 @@ function UpdateList(e) {
     mainContent.innerHTML = mainContentStr;
 }
 
+function ShowResult(ShowBMIValue, ShowBMIJudgement, ShowBMIJudgementColor) {
+    var BMIResultButton = document.querySelector('.BMIResultButton');
+    var BMIResultButtonStr = '<div class="BMIResultButton" style="color:' + ShowBMIJudgementColor + '; border: 2px solid ' + ShowBMIJudgementColor + '; position: relative; background: #424242;"><p>' + ShowBMIValue + '<em>BMI</em></p><a href="#" style="background: ' + ShowBMIJudgementColor + '; border: 1px solid ' + ShowBMIJudgementColor + ';"><img src="https://upload.cc/i1/2022/05/08/9FJVha.png" alt="#"></a><p class="BMIResultAccessment">' + ShowBMIJudgement + '</p><div>';
+    BMIResultButton.innerHTML = BMIResultButtonStr;
+
+    var ResultButtonReset = document.querySelector('.BMIResultButton a');
+    ResultButtonReset.addEventListener('click', ResetResult, false);
+
+}
+
+function ResetResult() {
+    var BMIResultButton = document.querySelector('.BMIResultButton');
+    var BMIResultButtonStr = '<button>看結果</button>';
+    BMIResultButton.innerHTML = BMIResultButtonStr;
+    HeightInput.value = "";
+    WeightInput.value = "";
+    var ResultButton = document.querySelector('.BMIResultButton button');
+    ResultButton.addEventListener('click', addRecord, false);
+}
+
 function addRecord(e) {
     var BMIValue = (WeightInput.value / ((HeightInput.value / 100) * (HeightInput.value / 100))).toFixed(2);
     var BMIJudgement;
+    var BMIJudgementColor;
     var AddDate = new Date();
     var DateStr = (AddDate.getMonth() + 1) + "-" + AddDate.getDate() + "-" + AddDate.getFullYear();
     var AddAryStr;
@@ -41,12 +62,15 @@ function addRecord(e) {
     switch (true) {
         case (BMIValue <= 18.5):
             BMIJudgement = "過輕";
+            BMIJudgementColor = "#86D73E";
             break;
         case (BMIValue >= 25):
             BMIJudgement = "過重";
+            BMIJudgementColor = "#31BAF9";
             break;
         default:
             BMIJudgement = "正常";
+            BMIJudgementColor = "#FF982D";
     }
 
     Addobj = {
@@ -60,6 +84,7 @@ function addRecord(e) {
     AddAryStr = JSON.stringify(AddAry);
     localStorage.setItem("DataSet", AddAryStr);
     UpdateList();
+    ShowResult(BMIValue, BMIJudgement, BMIJudgementColor);
 }
 
 var AddAry = [];

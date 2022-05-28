@@ -91,7 +91,49 @@ table {
     width: 90px;
     display: flex;
     justify-content: center;
+    align-items: center;
     border-radius: 50%;
+    /* position: relative;
+    border: 2px solid #86D73E;
+    background: #424242;
+    word-wrap:break-word; */
+}
+
+.headerInner .BMIResultButton p{
+    width: 70px;
+    height: 45px;
+    font-size: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerInner .BMIResultButton p em{
+    font-size: 14px;
+}
+
+.headerInner .BMIResultButton a{
+    width: 20px;
+    height: 20px;
+    /* background: #86D73E; */
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 75px;
+    /* border: 1px solid #86D73E; */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.headerInner .BMIResultButton:hover{
+    box-shadow: 0 1px 6px 3px
+    rgba(255,195,49,0.64);
+}
+
+.headerInner .BMIResultButton:active{
+    background: #DEA921;
 }
 
 .headerInner .BMIResultButton button{
@@ -102,10 +144,16 @@ table {
 }
 
 .headerInner .BMIResultButton button:active{
-    border: 1px solid #000;    
     height: 90px;
     width: 90px;
     border-radius: 50%;
+}
+
+.headerInner .BMIResultButton .BMIResultAccessment{
+    font-size: 32px;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 200px;
 }
 
 .main{
